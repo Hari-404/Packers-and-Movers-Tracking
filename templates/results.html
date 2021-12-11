@@ -1,0 +1,52 @@
+<html>  
+<head>
+  <style>
+         table, td, th {
+            border: 1px solid black;
+         }
+      </style>
+</head>
+   <body>  
+   
+      
+<div>
+
+<table>  
+        <tr> 
+         <td style="text-align:center"> <h4>Order-ID</h4> </td>
+         <td style="text-align:center"> <h4>Source</h4> </td>
+         <td style="text-align:center"> <h4>Destination</h4> </td>
+         <td style="text-align:center"> <h4>Path</h4> </td>
+         <td style="text-align:center"> <h4>Estimated-Time</h4> </td>
+         <td style="text-align:center"> <h4>Status</h4> </td>
+         </tr>
+        {% for item in data %}
+<tr>
+    <td>{{item[1]}}</td>
+    <td>{{item[2]}}</td>
+    <td>{{item[3]}}</td>
+    <td>{{item[4]}}</td>
+    <td>{{item[5]}}</td>
+    <td>  {% if (item[6] == '0') %} ORDER RECEIVED {%elif (item[6] == '1')%} ORDER FINISHED {%else%} {{item[6]}} {% endif %} </td>
+</tr>
+{% endfor %}
+
+    </table> 
+     <div>
+      <form action = "/get_all" method = "post">  
+          <input type="submit" name="getall" value="Show All">
+      </form>
+    </div>
+
+
+<form action = "/show_order" method = "post">  
+        <table>  
+        <tr><td>Order ID</td>  
+        <td><input type ="text" name ="orderid"></td> <td><input type = "submit" value="Get Details"></td></tr>  
+        
+    </table>  
+      </form>
+
+</div>
+</body>  
+</html>  

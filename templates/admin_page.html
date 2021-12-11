@@ -1,0 +1,65 @@
+<html>  
+<head>
+  <style>
+        
+      </style>
+</head>
+   <body>  
+   
+      
+<div>
+
+<table border="1" >  
+        <tr > 
+         <td style="text-align:center"> <h4>Customer-ID</h4> </td>
+         <td style="text-align:center"> <h4>Order-ID</h4> </td>
+         <td style="text-align:center"> <h4>Source</h4> </td>
+         <td style="text-align:center"> <h4>Destination</h4> </td>
+         <td style="text-align:center"> <h4>Path</h4> </td>
+         <td style="text-align:center"> <h4>Estimated-Time</h4> </td>
+         <td style="text-align:center"> <h4>Status</h4> </td>
+         </tr>
+        {% for item in data %}
+<tr>
+    <td>{{item[0]}}</td>
+    <td>{{item[1]}}</td>
+    <td>{{item[2]}}</td>
+    <td>{{item[3]}}</td>
+    <td>{{item[4]}}</td>
+    <td>{{item[5]}}</td>
+    <td>  {% if (item[6] == '0') %} ORDER RECEIVED {%elif (item[6] == '1')%} ORDER FINISHED {%else%} {{item[6]}} {% endif %} </td>
+</tr>
+{% endfor %}
+
+    </table> 
+     <div>
+      <form action = "/admin_login" method = "post">  
+          <input type="submit" name="refresh" value="Refresh">
+      </form>
+    </div>
+</div>
+
+
+    <form action = "/change_status" method = "post">  
+        <table>  
+        <tr>
+          <td>Order ID</td>  
+          <td><input type ="text" name ="orderid"></td> 
+          <td><input type = "submit" value="Change Status"></td>
+        </tr>  
+        </table>  
+    </form>
+
+    <form action = "/move_package" method = "post">  
+        <table>  
+        <tr>
+          <td>Order ID</td>  
+          <td><input type ="text" name ="orderid"></td> 
+          <td><input type = "submit" value="Move Package"></td>
+        </tr>  
+        </table>  
+    </form>
+      
+
+</body>  
+</html>  
