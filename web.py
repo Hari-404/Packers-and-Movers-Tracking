@@ -64,14 +64,12 @@ def signup_page():
 # Customer View all orders
 @app.route('/get_all', methods=['POST'])
 def view_orders():
-	# customer.login('hari.280755@gmail.com', 'Hari@2011')
 	result = customer.get_all_orders()
 	return render_template('results.html', data=result)
 
 # Customer Show one order
 @app.route('/show_order', methods=['POST'])
 def show_order():
-	# customer.login('hari.280755@gmail.com', 'Hari@2011')
 	order_id = int(request.form['orderid'])
 	result = customer.show_order(order_id)
 	return render_template('results.html', data=result)
@@ -84,7 +82,6 @@ def show_order_page():
 # Customer places an order
 @app.route('/order', methods = ['POST'])
 def order():
-	# customer.login('hari.280755@gmail.com', 'Hari@2011')
 	src=request.form['city']
 	dst=request.form['dstcity']
 	print(src, dst, sep="+")
