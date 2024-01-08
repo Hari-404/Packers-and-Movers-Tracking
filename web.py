@@ -22,7 +22,7 @@ def login():
 	password=request.form['pass']
 	if customer.login(uname, password):
 		return render_template("home.html")
-	return "Invalid details"
+	return "Invalid details."
 
 # *Admin Login -> admin home page
 @app.route('/admin_login', methods = ['POST'])
